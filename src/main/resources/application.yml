@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: backend-auth
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: ${SSL_KEY_STORE:file:./.local/localhost.p12}
+    key-store-type: PKCS12
+    key-store-password: ${SSL_KEY_STORE_PASSWORD}
+    key-alias: localhost
+    enabled-protocols: TLSv1.2,TLSv1.3
+  error:
+    include-message: never
+    include-stacktrace: never
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: backend-auth
+    audience: backend-api
+    ttl: PT15M
+  users:
+    user-password: ${APP_USER_PASSWORD}
+    admin-password: ${APP_ADMIN_PASSWORD}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:https://localhost:4200}
+logging:
+  level:
+    org.apache.tomcat.util.net: DEBUG
