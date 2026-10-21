@@ -1,0 +1,10 @@
+target/
+.tools/
+.local/
+.env
+*.p12
+*.jks
+*.log
+.idea/
+.vscode/
+*.iml
